@@ -1,0 +1,69 @@
+<template>
+  <!-- Header -->
+  <header id="header" class="bg-gray-700">
+    <nav class="container mx-auto flex justify-start items-center py-5 px-4">
+      <!-- App Name -->
+      <RouterLink
+        class="text-white font-bold uppercase text-2xl mr-4"
+        :to="{ name: 'home' }"
+        exact-active-class=""
+        >Music</RouterLink
+      >
+
+      <div class="flex flex-grow items-center">
+        <!-- Primary Navigation -->
+        <ul class="flex flex-row mt-1">
+          <li>
+            <RouterLink class="px-2 text-white" :to="{ name: 'about' }">About</RouterLink>
+          </li>
+          <!-- Navigation Links -->
+          <li v-if="!userStore.userLoggedIn">
+            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal"
+              >Login / Register</a
+            >
+          </li>
+          <template v-else>
+            <li>
+              <RouterLink class="px-2 text-white" :to="{ name: 'manage' }">Manage</RouterLink>
+            </li>
+            <li>
+              <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</template>
+
+<script>
+// You can also do
+// import { mapState, mapWritableState } from 'pinia'
+// "mapState" gives you the store's state (data) as read-only
+// "mapWritableState" gives you the store's mutable state
+import { mapStores } from 'pinia'
+import useModalStore from '@/stores/modal'
+import useUserStore from '@/stores/user'
+
+export default {
+  name: 'AppHeader',
+  computed: {
+    ...mapStores(useModalStore, useUserStore)
+  },
+  methods: {
+    toggleAuthModal() {
+      // The "modalStore" name is generated from store's id that we defined in the store and the word "Store"
+      this.modalStore.isOpen = !this.modalStore.isOpen
+    },
+    signOut() {
+      this.userStore.signOut()
+
+      if (this.$route.meta.requiresAuth) {
+        this.$router.push({ name: 'home' })
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>
