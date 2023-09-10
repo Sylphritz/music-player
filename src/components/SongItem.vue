@@ -12,15 +12,32 @@
     </div>
 
     <div class="text-gray-600 text-lg">
-      <span class="comments">
-        <i class="fa fa-comments text-gray-600"></i>
-        {{ song.comment_count }}
-      </span>
+      <!--
+          `custom` tells the rounter-link component to not generate an <a> tag.
+          `v-slot` provides you with some resources to use inside the component.
+          Available resources: isActive, href, navigate
+          In this case, we want the navigate function.
+
+          Read more here: https://router.vuejs.org/guide/advanced/extending-router-link.html#Extending-RouterLink
+      -->
+      <RouterLink
+        custom
+        :to="{ name: 'song', params: { id: song.docID }, hash: '#comments' }"
+        v-slot="{ navigate }"
+      >
+        <!-- Run the `navigate()` function on click to push the new route. -->
+        <span class="comments" @click="navigate">
+          <i class="fa fa-comments text-gray-600"></i>
+          {{ song.comment_count }}
+        </span>
+      </RouterLink>
     </div>
   </li>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router'
+
 export default {
   name: 'SongItem',
   props: {
@@ -28,6 +45,7 @@ export default {
       type: Object,
       required: true
     }
-  }
+  },
+  components: { RouterLink }
 }
 </script>
