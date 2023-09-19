@@ -68,6 +68,18 @@ export default {
           return
         }
 
+        if (!navigator.onLine) {
+          this.uploads.push({
+            task: {},
+            current_progress: 100,
+            name: file.name,
+            variant: 'bg-red-400',
+            icon: 'fas fa-times',
+            text_class: 'text-red-400'
+          })
+          return
+        }
+
         // The reference to the storage URL set in the plugin
         const storageRef = storage.ref() // music-11495.appspot.com
         const songsRef = storageRef.child(`songs/${file.name}`) // music-11495.appspot.com/songs/filename.mp3
