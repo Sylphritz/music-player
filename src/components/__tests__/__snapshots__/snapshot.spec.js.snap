@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Snapshots SongItem.vue > renders correctly 1`] = `
+<li
+  class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50"
+  id="song-id-abc"
+>
+  <div>
+    <router-link-stub
+      ariacurrentvalue="page"
+      class="font-bold block text-gray-600"
+      custom="false"
+      replace="false"
+      to="[object Object]"
+    />
+    <span
+      class="text-gray-500 text-sm"
+    >
+      test
+    </span>
+  </div>
+  <div
+    class="text-gray-600 text-lg"
+  >
+    <!--
+          \`custom\` tells the rounter-link component to not generate an &lt;a&gt; tag.
+          \`v-slot\` provides you with some resources to use inside the component.
+          Available resources: isActive, href, navigate
+          In this case, we want the navigate function.
+
+          Read more here: https://router.vuejs.org/guide/advanced/extending-router-link.html#Extending-RouterLink
+      -->
+    <router-link-stub
+      ariacurrentvalue="page"
+      custom="true"
+      replace="false"
+      to="[object Object]"
+    />
+  </div>
+</li>
+`;
