@@ -7,7 +7,7 @@ import { auth } from './includes/firebase'
 import Icon from './directives/icon'
 
 import i18n from './includes/i18n'
-import { registerSW } from 'virtual:pwa-register'
+// import { registerSW } from 'virtual:pwa-register'
 
 import App from './App.vue'
 import router from './router'
@@ -15,7 +15,7 @@ import router from './router'
 import './assets/base.css'
 import './assets/main.css'
 
-registerSW({ immediate: true })
+// registerSW({ immediate: true })
 
 let app
 
