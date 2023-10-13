@@ -1,42 +1,38 @@
 <template>
   <main>
-    <section class="mb-8 py-20 text-white text-center relative">
+    <section class="mb-8 py-20 text-white relative">
       <div
-        class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-        style="background-image: url(assets/img/header.png)"
+        class="absolute inset-0 w-full h-full bg-cover bg-center -z-10 opacity-20"
+        style="background-image: url(assets/img/wavy-lines.png)"
       ></div>
-      <div class="container mx-auto">
-        <div class="text-white main-header-content">
-          <h1 class="font-bold text-5xl mb-5">{{ $t('home.listen') }}</h1>
-          <p class="w-full md:w-8/12 mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et dolor mollis,
-            congue augue non, venenatis elit. Nunc justo eros, suscipit ac aliquet imperdiet,
-            venenatis et sapien. Duis sed magna pulvinar, fringilla lorem eget, ullamcorper urna.
+      <div class="relative container mx-auto">
+        <div class="text-white">
+          <h1 class="w-3/5 mb-5 -ml-px font-thin leading-tight tracking-tight uppercase text-5xl">
+            {{ $t('home.listen') }}
+          </h1>
+          <p class="w-3/5 text-lg">
+            A community-driven music player. Upload you songs and let everyone listen to them!
           </p>
         </div>
+        <img
+          class="absolute right-9 top-1/2 -translate-y-1/2 h-72 drop-shadow-lg"
+          src="/assets/img/hero-image.png"
+        />
       </div>
-
-      <img
-        class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full"
-        src="/assets/img/introduction-music.png"
-      />
     </section>
 
     <!-- Main Content -->
     <section class="container mx-auto">
-      <div class="bg-white rounded border border-gray-200 relative flex flex-col">
+      <div class="bg-gray-800/50 rounded relative flex flex-col">
         <div
-          class="px-6 pt-6 pb-5 font-bold border-b border-gray-200"
-          v-icon-secondary="{ icon: 'headphones-alt', right: true }"
+          class="px-6 pt-6 pb-5 font-bold border-b border-gray-700/80"
+          v-icon="{ icon: 'headphones-alt', right: true }"
         >
-          <span class="card-title">Songs</span>
-          <!-- Icon -->
+          <span class="card-title text-white uppercase tracking-wider">Songs</span>
         </div>
-        <!-- Playlist -->
         <ol id="playlist">
           <AppSongItem v-for="song in songs" :key="song.docID" :song="song" />
         </ol>
-        <!-- .. end Playlist -->
       </div>
     </section>
   </main>
@@ -45,7 +41,7 @@
 <script>
 import { songsCollection } from '@/includes/firebase'
 import AppSongItem from '@/components/SongItem.vue'
-import IconSecondary from '@/directives/icon-secondary'
+import Icon from '@/directives/icon'
 
 export default {
   name: 'Home',
@@ -53,7 +49,7 @@ export default {
     AppSongItem
   },
   directives: {
-    'icon-secondary': IconSecondary
+    icon: Icon
   },
   data() {
     return {

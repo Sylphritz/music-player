@@ -1,46 +1,35 @@
 <template>
-  <!-- Header -->
-  <header id="header" class="bg-gray-700">
-    <nav class="container mx-auto flex justify-start items-center py-5 px-4">
-      <!-- App Name -->
+  <header class="bg-gradient-to-b from-black/30 to-transparent">
+    <nav class="container mx-auto flex justify-between items-center py-3">
       <RouterLink
-        class="text-white font-bold uppercase text-2xl mr-4"
+        class="inline-block bg-gradient-to-r from-pink-400 to-white bg-clip-text text-transparent font-bold uppercase text-2xl tracking-tight mr-3"
         :to="{ name: 'home' }"
         exact-active-class=""
-        >Music</RouterLink
+        >Myujikku</RouterLink
       >
 
-      <div class="flex flex-grow items-center">
-        <!-- Primary Navigation -->
-        <ul class="flex flex-row mt-1">
+      <ul class="flex-none flex flex-row gap-4">
+        <li class="border-r border-r-white/30">
+          <RouterLink class="px-4 text-white" :to="{ name: 'about' }">About</RouterLink>
+        </li>
+        <li v-if="!userStore.userLoggedIn">
+          <a class="text-white" href="#" @click.prevent="toggleAuthModal">Login</a>
+        </li>
+        <template v-else>
           <li>
-            <RouterLink class="px-2 text-white" :to="{ name: 'about' }">About</RouterLink>
+            <RouterLink class="text-white" :to="{ name: 'manage' }">Manage</RouterLink>
           </li>
-          <!-- Navigation Links -->
-          <li v-if="!userStore.userLoggedIn">
-            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal"
-              >Login / Register</a
-            >
+          <li>
+            <a class="text-white" href="#" @click.prevent="signOut">Logout</a>
           </li>
-          <template v-else>
-            <li>
-              <RouterLink class="px-2 text-white" :to="{ name: 'manage' }">Manage</RouterLink>
-            </li>
-            <li>
-              <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
-            </li>
-          </template>
-        </ul>
-      </div>
+        </template>
+      </ul>
     </nav>
   </header>
 </template>
 
 <script>
 // You can also do
-// import { mapState, mapWritableState } from 'pinia'
-// "mapState" gives you the store's state (data) as read-only
-// "mapWritableState" gives you the store's mutable state
 import { mapStores } from 'pinia'
 import useModalStore from '@/stores/modal'
 import useUserStore from '@/stores/user'

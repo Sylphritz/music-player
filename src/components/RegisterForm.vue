@@ -17,7 +17,7 @@
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
         placeholder="Enter Name"
       />
-      <ErrorMessage class="text-red-600" name="name" />
+      <ErrorMessage class="block mt-1 text-pink-300" name="name" />
     </div>
     <!-- Email -->
     <div class="mb-3">
@@ -28,7 +28,7 @@
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
         placeholder="Enter Email"
       />
-      <ErrorMessage class="text-red-600" name="email" />
+      <ErrorMessage class="block mt-1 text-pink-300" name="email" />
     </div>
     <!-- Age -->
     <div class="mb-3">
@@ -38,7 +38,7 @@
         type="number"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
       />
-      <ErrorMessage class="text-red-600" name="age" />
+      <ErrorMessage class="block mt-1 text-pink-300" name="age" />
     </div>
     <!-- Password -->
     <div class="mb-3">
@@ -50,7 +50,7 @@
           placeholder="Password"
           v-bind="field"
         />
-        <div class="text-red-600" v-for="error in errors" :key="error">
+        <div class="block mt-1 text-pink-300" v-for="error in errors" :key="error">
           {{ error }}
         </div>
       </VeeField>
@@ -64,7 +64,7 @@
         type="password"
         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
       />
-      <ErrorMessage class="text-red-600" name="confirm_password" />
+      <ErrorMessage class="block mt-1 text-pink-300" name="confirm_password" />
     </div>
     <!-- Country -->
     <div class="mb-3">
@@ -79,7 +79,7 @@
         <option value="Germany">Germany</option>
         <option value="Antarctica">Antarctica</option>
       </VeeField>
-      <ErrorMessage class="text-red-600" name="country" />
+      <ErrorMessage class="block mt-1 text-pink-300" name="country" />
     </div>
     <!-- TOS -->
     <div class="mb-3 pl-6">
@@ -91,11 +91,11 @@
       />
       <label class="inline-block">Accept terms of service</label>
       <br />
-      <ErrorMessage class="text-red-600" name="tos" />
+      <ErrorMessage class="block mt-1 text-pink-300" name="tos" />
     </div>
     <button
       type="submit"
-      class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition hover:bg-purple-700"
+      class="block w-full bg-pink-500 text-white mt-5 py-2 px-3 rounded transition hover:bg-pink-700"
       :disabled="reg_in_submission"
     >
       Submit

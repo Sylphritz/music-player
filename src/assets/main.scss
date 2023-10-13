@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Albert Sans', sans-serif;
+  }
+}
+
+body {
+  @apply bg-gradient-to-b from-slate-900 to-gray-900 pb-24;
+}
+
+a {
+  transition: all 0.15s ease;
+}
+
+a:hover {
+  @apply text-pink-400;
+
+  text-decoration: none;
+}
+
+#playlist li:first-child {
+  padding-top: 25px;
+}
+
+.upload-dropbox.upload-dropbox-drag {
+  color: #fff;
+  background-color: #20d862;
+  border-color: #20d862;
+  border-style: solid;
+}
+
+input[type='file'] {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  background-size: 1rem 1rem;
+  background-image: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent);
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position: 1rem 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes slide {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -4000px 0;
+  }
+}

@@ -12,8 +12,7 @@ import i18n from './includes/i18n'
 import App from './App.vue'
 import router from './router'
 
-import './assets/base.css'
-import './assets/main.css'
+import './assets/main.scss'
 
 // registerSW({ immediate: true })
 
