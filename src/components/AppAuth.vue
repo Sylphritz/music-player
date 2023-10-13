@@ -42,7 +42,8 @@
           </ul>
 
           <LoginForm v-if="tab === 'login'" />
-          <RegisterForm v-else />
+          <div class="py-4 text-center">Account registration not allowed on the live demo.</div>
+          <!-- <RegisterForm v-else /> -->
         </div>
       </div>
     </div>
@@ -52,13 +53,13 @@
 <script>
 import { mapState, mapWritableState } from 'pinia'
 import useModalStore from '@/stores/modal'
-import RegisterForm from '@/components/RegisterForm.vue'
+// import RegisterForm from '@/components/RegisterForm.vue'
 import LoginForm from '@/components/LoginForm.vue'
 
 export default {
   name: 'Auth',
   components: {
-    RegisterForm,
+    // RegisterForm,
     LoginForm
   },
   data() {
