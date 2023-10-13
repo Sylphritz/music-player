@@ -29,3 +29,7 @@ coverage
 
 # SW
 dev-dist
+
+# ENV
+.env
+.env.*
