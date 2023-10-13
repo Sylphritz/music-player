@@ -6,8 +6,12 @@
         style="background-image: url(assets/img/wavy-lines.png)"
       ></div>
       <div class="relative container mx-auto">
-        <div class="text-white">
-          <h1 class="w-3/5 mb-5 -ml-px font-thin leading-tight tracking-tight uppercase text-5xl">
+        <div
+          class="hero-section-title text-white bg-gradient-to-br from-pink-500 to-white bg-clip-text"
+        >
+          <h1
+            class="inline-block w-3/5 mb-5 -ml-px font-thin leading-tight tracking-tight uppercase text-5xl text-transparent"
+          >
             {{ $t('home.listen') }}
           </h1>
           <p class="w-3/5 text-lg">

@@ -1,16 +1,13 @@
 <template>
   <main>
-    <section class="w-full mb-8 py-14 text-center text-white relative">
-      <div
-        class="absolute inset-0 w-full h-full box-border bg-contain music-bg"
-        style="background-image: url(/assets/img/song-header.png)"
-      ></div>
+    <section
+      class="w-full mb-8 py-14 text-center text-white relative bg-gradient-to-b from-transparent via-pink-800/50 to-transparent"
+    >
       <div class="container mx-auto flex items-center">
-        <!-- Play/Pause Button -->
         <button
           id="play-btn"
           type="button"
-          class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
+          class="h-24 w-24 text-3xl bg-pink-600 hover:bg-pink-700 active:bg-pink-900 text-white rounded-full focus:outline-none"
           @click.prevent="playing ? toggleAudio() : newSong(song)"
         >
           <i
@@ -21,20 +18,19 @@
             }"
           ></i>
         </button>
-        <div class="z-50 text-left ml-8">
-          <!-- Song Info -->
-          <div class="text-3xl font-bold">{{ song.modified_name }}</div>
+        <div class="text-left ml-8">
+          <div class="text-3xl tracking-wide">{{ song.modified_name }}</div>
           <div>{{ song.genre }}</div>
         </div>
       </div>
     </section>
     <!-- Form -->
     <section id="comments" class="container mx-auto mt-6">
-      <div class="bg-white rounded border border-gray-200 relative flex flex-col">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
+      <div class="bg-pink-900/70 rounded relative flex flex-col">
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-500/80">
           <!-- Comment Count -->
-          <span class="card-title">Comments ({{ song.comment_count }})</span>
-          <i class="fa fa-comments float-right text-green-400 text-2xl"></i>
+          <span class="text-white">Comments ({{ song.comment_count }})</span>
+          <i class="fa fa-comments float-right text-white text-2xl"></i>
         </div>
         <div class="p-6">
           <div
@@ -54,7 +50,7 @@
             <ErrorMessage class="text-red-600" name="comment" />
             <button
               type="submit"
-              class="py-1.5 px-3 rounded text-white bg-green-600 block"
+              class="py-1.5 px-3 rounded text-white bg-pink-600 hover:bg-pink-700 active:bg-pink-800 block"
               :disabled="comment_in_submission"
             >
               Submit
@@ -71,17 +67,16 @@
         </div>
       </div>
     </section>
-    <!-- Comments -->
     <ul class="container mx-auto">
       <li
-        class="p-6 bg-gray-50 border border-gray-200"
+        class="p-6 bg-pink-900/70 border-b border-gray-100/20 last:border-b-0 text-white"
         v-for="comment in sortedComments"
         :key="comment.docID"
       >
         <!-- Comment Author -->
         <div class="mb-5">
           <div class="font-bold">{{ comment.name }}</div>
-          <time>{{ comment.datePosted }}</time>
+          <time>{{ formatDate(comment.datePosted) }}</time>
         </div>
 
         <p>
@@ -97,6 +92,7 @@ import { songsCollection, auth, commentsCollection } from '@/includes/firebase'
 import { mapState, mapActions } from 'pinia'
 import useUserStore from '@/stores/user'
 import usePlayerStore from '@/stores/player'
+import format from 'date-fns/format'
 
 export default {
   name: 'Song',
@@ -198,6 +194,9 @@ export default {
           docID: doc.id
         })
       })
+    },
+    formatDate(dateString) {
+      return format(new Date(dateString), 'EEEE, d MMMM yyyy')
     }
   }
 }

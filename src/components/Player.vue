@@ -1,39 +1,34 @@
 <template>
-  <div class="fixed bottom-0 left-0 bg-white px-4 py-2 w-full">
+  <div
+    class="fixed bottom-0 left-0 px-4 py-4 w-full bg-gradient-to-b from-gray-900/90 to-pink-800"
+    :class="[current_song.modified_name ? 'opacity-100' : 'opacity-50']"
+  >
     <!-- Track Info -->
-    <div class="text-center" v-if="current_song.modified_name">
-      <span class="song-title font-bold">{{ current_song.modified_name }}</span> by
-      <span class="song-artist">{{ current_song.displayName }}</span>
+    <div class="text-center text-white" v-if="current_song.modified_name">
+      <span class="font-bold">{{ current_song.modified_name }}</span> by
+      {{ current_song.display_name }}
     </div>
     <div class="flex flex-nowrap gap-4 items-center">
-      <!-- Play/Pause Button -->
       <button type="button" @click.prevent="toggleAudio" id="player-play-btn">
-        <i
-          class="fa text-gray-500 text-xl"
-          :class="{ 'fa-play': !playing, 'fa-pause': playing }"
-        ></i>
+        <i class="fa text-white text-xl" :class="{ 'fa-play': !playing, 'fa-pause': playing }"></i>
       </button>
-      <!-- Current Position -->
-      <div class="player-currenttime">{{ seek }}</div>
+      <div class="w-[50px] text-right text-white">{{ seek }}</div>
       <div
         class="w-full h-2 rounded bg-gray-200 relative cursor-pointer"
         @click.prevent="updateSeek"
       >
-        <!-- Player Ball -->
         <span
-          class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg"
+          class="absolute -top-2.5 -ml-2.5 text-white text-lg shadow"
           :style="{ left: playerProgress }"
         >
           <i class="fas fa-circle"></i>
         </span>
-        <!-- Player Progress Bar-->
         <span
           class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
           :style="{ width: playerProgress }"
         ></span>
       </div>
-      <!-- Duration -->
-      <div class="player-duration">{{ duration }}</div>
+      <div class="w-[50px] text-white">{{ duration }}</div>
     </div>
   </div>
 </template>
