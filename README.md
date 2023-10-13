@@ -1,5 +1,7 @@
 # The Greatest Music Player That's Ever Been Created
 
+![App Image](readme-images/app-image.jpg)
+
 This is just a Vue.js app I made to demonstrate my skills. It works and you can play around with it, or clone it or whatever I don't care.
 
 ### [LIVE DEMO](https://myujikku.netlify.app/)
