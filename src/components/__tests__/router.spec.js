@@ -14,14 +14,14 @@ describe('Router', () => {
       props: { song },
       global: {
         components: {
-          RouterLinkStub
+          RouterLink: RouterLinkStub
         }
       }
     })
 
     expect(wrapper.findComponent(RouterLinkStub).props().to).toEqual({
       name: 'song',
-      params: { params: { id: song.docID } }
+      params: { id: song.docID }
     })
   })
 })

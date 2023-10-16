@@ -2,25 +2,25 @@
 
 exports[`Snapshots SongItem.vue > renders correctly 1`] = `
 <li
-  class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50"
+  class="flex justify-between items-center p-3 pl-6 transition duration-100 hover:bg-gray-700/50"
   id="song-id-abc"
 >
   <div>
     <router-link-stub
       ariacurrentvalue="page"
-      class="font-bold block text-gray-600"
+      class="block text-white tracking-wider"
       custom="false"
       replace="false"
       to="[object Object]"
     />
     <span
-      class="text-gray-500 text-sm"
+      class="text-white/70 text-sm"
     >
       test
     </span>
   </div>
   <div
-    class="text-gray-600 text-lg"
+    class="text-white text-lg"
   >
     <!--
           \`custom\` tells the rounter-link component to not generate an &lt;a&gt; tag.
